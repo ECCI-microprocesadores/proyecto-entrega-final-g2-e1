@@ -3,8 +3,15 @@
 
 ## Integrantes
 
+Sofy Parra
 
-## Nombre del proyecto: 
+Carlos Sierra
+
+Edisson Fonseca
+
+## Nombre del proyecto:
+
+### Invernadero con control automatico de temperatura, humedad y luminocidad
 
 
 ## Documentación
