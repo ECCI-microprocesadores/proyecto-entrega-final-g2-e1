@@ -13,6 +13,19 @@ Edisson Fonseca
 
 ### Invernadero con control automatico de temperatura, humedad y luminocidad
 
+## implementacion:
+
+### Prototipo
+
+![implementacion](https://github.com/ECCI-microprocesadores/proyecto-entrega-final-g2-e1/blob/fc6570c32afeaec9a5d922fe0b30306a31bc802b/Imagenes/implementacion.jpeg)
+
+![implementacion1](https://github.com/ECCI-microprocesadores/proyecto-entrega-final-g2-e1/blob/fc6570c32afeaec9a5d922fe0b30306a31bc802b/Imagenes/implementacion1.jpeg)
+
+### Datos obtenidos
+
+![python](https://github.com/ECCI-microprocesadores/proyecto-entrega-final-g2-e1/blob/fc6570c32afeaec9a5d922fe0b30306a31bc802b/Imagenes/python.png)
+
+![serial](https://github.com/ECCI-microprocesadores/proyecto-entrega-final-g2-e1/blob/fc6570c32afeaec9a5d922fe0b30306a31bc802b/Imagenes/serial.png)
 
 ## Documentación
 
