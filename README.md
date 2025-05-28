@@ -17,13 +17,19 @@ Edisson Fonseca
 
 ### Prototipo
 
+Se realizo un prototipo miniatura para simular el entorno de un invernadero y acercar los datos a la mas real posible.
+
 ![implementacion](https://github.com/ECCI-microprocesadores/proyecto-entrega-final-g2-e1/blob/fc6570c32afeaec9a5d922fe0b30306a31bc802b/Imagenes/implementacion.jpeg)
 
 ![implementacion1](https://github.com/ECCI-microprocesadores/proyecto-entrega-final-g2-e1/blob/fc6570c32afeaec9a5d922fe0b30306a31bc802b/Imagenes/implementacion1.jpeg)
 
 ### Datos obtenidos
 
+Al obtener los datos de la temperatura con ayuda del graficador serial de python se obtubo grafica en tiempo real de la temperatura.
+
 ![python](https://github.com/ECCI-microprocesadores/proyecto-entrega-final-g2-e1/blob/fc6570c32afeaec9a5d922fe0b30306a31bc802b/Imagenes/python.png)
+
+Utilizamos un software serial que nos permitiera visualzar los datos enviados por el microcontrolador en el PC
 
 ![serial](https://github.com/ECCI-microprocesadores/proyecto-entrega-final-g2-e1/blob/fc6570c32afeaec9a5d922fe0b30306a31bc802b/Imagenes/serial.png)
 
