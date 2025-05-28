@@ -19,6 +19,12 @@ Edisson Fonseca
 
 ## Diagramas
 
+### Diagrama esquematico
+
+![Esquematico proyecto](https://github.com/ECCI-microprocesadores/proyecto-entrega-final-g2-e1/blob/51fe4025bf56f4db71f0b184c6b1f751667cc83d/Imagenes/INVERNADERO.png)
+
+### Diagrama de flujo
+
 
 ## Conclusiones
 
