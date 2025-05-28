@@ -16,6 +16,64 @@ Edisson Fonseca
 
 ## Documentación
 
+### Resumen de funcionamiento
+
+Para la implementacion de este proyecto se penso en la automatizacion de un invernadero cuyas caracteristicas se explicaran a continuacion: 
+
+#### 1. Sensado del Ambiente
+El sistema recoge datos del entorno utilizando dos tipos de sensores:
+
+- LDR (fotoresistencia):
+        Mide la intensidad de luz ambiental, el valor se convierte a voltaje para poder visualizarse por UART y dependiendo del voltaje suministrado al ADC se concluye el estado del dia (soleado, nublado o noche).
+
+- DHT11:
+        Sensor digital que mide temperatura y humedad relativa del aire, se conecta a RA1 y se lee periódicamente. segun la toma de valores se toman decisiones sobre el ya sea bajar temperatura por medio del ventilador o realizar riego del cultivo si la humedad no es la correcta por medio de la bomba de agua.
+
+#### 2. Control del Ventilador
+
+- Si la temperatura medida supera los 25°C, el sistema enciende el ventilador por medio de el pin (RC0), paralelamente enciende un LED indicador (RC1) indicando que hay una alta temperatura y que el ventilador esta encendido.
+-  la temperatura es 25°C o menor, se apagan ambos. Esto ayuda a mantener la temperatura del invernadero en niveles adecuados para el cultivo.
+
+#### 3. Control de la Bomba de Agua (RC2 via PWM)
+Dependiendo del valor de humedad relativa, el sistema ajusta el nivel de riego por medio del control del duty cicle del PWM hacia la bomba de agua del sistema de riego de la sigueinte forma:
+
+| Humedad (%) | Acción                        | PWM (%) | LED Bomba (RC3) |
+|-------------|-------------------------------|---------|------------------|
+| > 30        | Riego máximo                  | 100%    | Encendido        |
+| 30–39       | Riego medio                   | 75%     | Encendido        |
+| 40–49       | Riego leve (debería ser menor)| 60%     | Encendido        |
+| ≥ 50        | Sin riego                     | 0%      | Apagado          |
+
+Esto mantiene una humedad adecuada para el cultivo generando un aprovechamiento optimo del recurso hidrico.
+
+#### 4. Visualización por UART
+
+Cada 5 segundos se envían los siguientes datos por UART:
+- Intensidad luminica
+- Temperatura (°C)
+- Humedad (%)
+Esto permite monitorear en tiempo real las condiciones del invernadero desde un computador o terminal  opteniendo graficas de temperatura en tiempo real.
+
+#### 5. Ciclo de Operación
+
+Cada 0.5 segundos, el sistema repite el siguiente proceso:
+- Lee el valor del LDR.
+- Lee temperatura y humedad del DHT11.
+- Activa o desactiva ventilador y bomba según condiciones.
+- Si es el décimo ciclo o han pasado 5 segundos, muestra los datos por UART.
+
+#### Resumen del funcionamiento 
+
+| Etapa        | Descripción                                                                 |
+|--------------|------------------------------------------------------------------------------|
+| Sensado      | Se leen los valores del LDR (luz) y DHT11 (temperatura y humedad).          |
+| Decisión     | Se evalúan condiciones para activar ventilador o bomba según umbrales.      |
+| Actuación    | Se encienden/apagan ventilador, bomba de riego (PWM) y LEDs.                |
+| Reporte UART | Cada 10 ciclos se envían datos por UART: luz, temperatura (°C), humedad (%) |
+| Retardo      | Se espera 500 ms antes de repetir el ciclo.                                 |
+
+
+
 
 ## Diagramas
 
