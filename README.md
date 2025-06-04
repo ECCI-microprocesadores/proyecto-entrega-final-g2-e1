@@ -211,6 +211,55 @@ if (temp > 25) {
     LED_VENTILADOR = 0;
 }
 ```
+Si la temperatura supera 25 °C, activa el ventilador y enciende el LED indicando que se encuenta activo el sistema de enfriamiento.
+
+Si no, los apaga.
+
+Control de la bomba de agua por PWM:
+
+```
+if (hum < 30) {
+    PWM_SetDutyCycle(100); // riego máximo
+    LED_BOMBA = 1;
+} else if (hum < 40) {
+    PWM_SetDutyCycle(55);  // riego medio
+    LED_BOMBA = 1;
+} else if (hum < 50) {
+    PWM_SetDutyCycle(60);  // riego leve
+    LED_BOMBA = 1;
+} else {
+    PWM_SetDutyCycle(0);   // apagado
+    LED_BOMBA = 0;
+}
+
+```
+Dependiendo del valor de humedad:
+
+Menor que 30%: activa la bomba al 100%.
+
+Entre 30–39%: activa la bomba al 75%.
+
+Entre 40–49%: activa la bomba al 60%.
+
+Mayor o igual que 50%: apaga la bomba.
+
+Envío de datos por UART:
+
+```
+if (contador >= 10) {
+    sprintf(buffer, "Luz: %.2fV | T: %uC | H: %u%%\r\n", volt, temp, hum);
+    UART_WriteString(buffer);
+    contador = 0;
+} else {
+    contador++;
+}
+
+```
+Cada 10 ciclos (cada 5 segundos aprox.):
+
+Muestra el voltaje de  en forma de soleado, nublado o noche, temperatura y humedad por UART por medio de serial, graficando tambien los datos de temperatura por python.
+
+
 
 
 
