@@ -274,5 +274,6 @@ Muestra el voltaje de  en forma de soleado, nublado o noche, temperatura y humed
 
 ## Conclusiones
 
+Gracias a las implementaciones realizadas en el transcurso del semestre pudimos optener las habilidades requeridas para poder desarrollar este proyecto en el  ual implementamos muchos de los conocimientos adquiridos durante el curso de microprocesadores.
 
 <!-- Crear una carpeta src e incluir en ella los códigos y/o el proyecto de mplab-->
