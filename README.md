@@ -7,7 +7,6 @@ Sofy Parra
 
 Carlos Sierra
 
-Edisson Fonseca
 
 ## Nombre del proyecto:
 
@@ -91,6 +90,21 @@ Cada 0.5 segundos, el sistema repite el siguiente proceso:
 | Reporte UART | Cada 10 ciclos se envían datos por UART: luz, temperatura (°C), humedad (%) |
 | Retardo      | Se espera 500 ms antes de repetir el ciclo.                                 |
 
+## Codigo
+
+1. Incluimos bibliotecas
+Aca estamos incluyendo las librerias necesarias para el funcionamiento del codigo, incluso usamos bibliotecas ya creadas anteriormente en clase
+
+´´´
+#include <xc.h>
+#include <stdint.h>
+#include <stdio.h>
+#include "uart.h"
+#include "adc.h"
+#include "dht11.h"
+#include "pwm.h"
+
+´´´
 
 
 
