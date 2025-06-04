@@ -95,7 +95,7 @@ Cada 0.5 segundos, el sistema repite el siguiente proceso:
 1. Incluimos bibliotecas
 Aca estamos incluyendo las librerias necesarias para el funcionamiento del codigo, incluso usamos bibliotecas ya creadas anteriormente en clase
 
-´´´
+```
 #include <xc.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -104,7 +104,113 @@ Aca estamos incluyendo las librerias necesarias para el funcionamiento del codig
 #include "dht11.h"
 #include "pwm.h"
 
-´´´
+```
+```#include <xc.h>```: Incluye los registros y definiciones específicas del microcontrolador PIC usado.
+
+```#include <stdint.h>```: Proporciona tipos de datos como uint8_t, uint16_t, etc.
+
+```#include <stdio.h>```: Se usa para funciones como sprintf, que convierte datos a texto.
+
+```"uart.h"```, ```"adc.h"```, ```"dht11.h"```,``` "pwm.h"```: Son archivos personalizados para controlar UART, ADC, sensor DHT11 y PWM. Definen funciones como ```UART_Init()```, ```ADC_Read_Average()```, etc.
+
+
+2. Configuración del microcontrolador
+```
+#pragma config FOSC = INTIO67
+#pragma config PLLCFG = OFF
+#pragma config PRICLKEN = ON
+#pragma config FCMEN = OFF
+#pragma config IESO = OFF
+#pragma config PWRTEN = ON
+#pragma config BOREN = OFF
+#pragma config WDTEN = OFF
+#pragma config LVP = OFF
+
+```
+```FOSC = INTIO67```: Usa el oscilador interno y habilita los pines RA6 y RA7 como E/S digitales.
+
+```PLLCFG = OFF```: Desactiva el PLL.
+
+```PRICLKEN = ON```: Habilita el reloj primario.
+
+```FCMEN = OFF```: Desactiva el monitoreo del reloj externo.
+
+```IESO = OFF```: Desactiva el cambio automático de osciladores.
+
+```PWRTEN = ON```: Habilita el temporizador de encendido.
+
+```BOREN = OFF```: Desactiva el reinicio por bajo voltaje.
+
+```WDTEN = OFF```: Desactiva el Watchdog Timer.
+
+```LVP = OFF```: Desactiva la programación en baja tensión.
+
+3. Definiciones y pines
+```
+#define _XTAL_FREQ 16000000UL
+#define VENTILADOR LATCbits.LATC0
+#define LED_VENTILADOR LATCbits.LATC1
+#define LED_BOMBA LATCbits.LATC3
+
+```
+```_XTAL_FREQ```: Define la frecuencia del oscilador (16 MHz). Es esencial para usar __delay_ms() correctamente.
+
+```VENTILADOR```, ```LED_VENTILADOR```, ```LED_BOMBA```: Acceso a los pines LATC0, LATC1 y LATC3.
+
+4. Función principal main()
+```
+TRISC0 = 0;
+TRISC1 = 0;
+TRISC3 = 0;
+```
+Configura RC0, RC1 y RC3 como salidas digitales al asignarles el 0:
+
+RC0 controla el ventilador.
+
+RC1 enciende un LED cuando el ventilador está activo.
+
+RC3 enciende un LED cuando la bomba está activa.
+```
+char buffer[64];
+uint8_t contador = 0;
+uint8_t temp, hum;
+```
+```buffer```: Almacena el texto a enviar por UART.
+
+```contador```: Se usa para enviar los datos cada 10 ciclos.
+
+```temp```, ```hum```: Variables para almacenar la temperatura y humedad leídas del DHT11.
+
+5. Bucle principal while(1)
+
+```
+uint16_t adc_val = ADC_Read_Average(10);
+```
+
+Lee el valor del sensor de luz (LDR) usando 10 lecturas para tomar la lectura mas real.
+
+```
+float volt = (adc_val * 5.0f) / 1023.0f;
+```
+
+Convierte el valor del ADC (0–1023) a voltaje casteando al valor flotante.
+
+```
+if (DHT11_Read(&temp, &hum)) {
+```
+
+Lee los valores de temperatura y humedad del sensor DHT11.
+
+Control del ventilador:
+```
+if (temp > 25) {
+    VENTILADOR = 1;
+    LED_VENTILADOR = 1;
+} else {
+    VENTILADOR = 0;
+    LED_VENTILADOR = 0;
+}
+```
 
 
 
