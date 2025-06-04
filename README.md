@@ -270,7 +270,7 @@ Muestra el voltaje de  en forma de soleado, nublado o noche, temperatura y humed
 ![Esquematico proyecto](https://github.com/ECCI-microprocesadores/proyecto-entrega-final-g2-e1/blob/51fe4025bf56f4db71f0b184c6b1f751667cc83d/Imagenes/INVERNADERO.png)
 
 ### Diagrama de flujo
-
+![Flujo proyecto](https://github.com/ECCI-microprocesadores/proyecto-entrega-final-g2-e1/blob/e4f46106147efa9566d18da8a9cc76dde28666c2/Imagenes/FLUJO.jpeg)
 
 ## Conclusiones
 
