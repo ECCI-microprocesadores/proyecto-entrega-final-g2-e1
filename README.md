@@ -7,7 +7,6 @@ Sofy Parra
 
 Carlos Sierra
 
-
 ## Nombre del proyecto:
 
 ### Invernadero con control automatico de temperatura, humedad y luminocidad
